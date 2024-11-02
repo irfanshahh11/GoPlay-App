@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sportspot-config
+  namespace: sportspot
+data:
+  db_host: "sportspot-mysql.sportspot.svc.cluster.local"
+  cors_origin: "https://playtime.com"
