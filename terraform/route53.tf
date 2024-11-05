@@ -1,10 +1,10 @@
 resource "aws_route53_zone" "main" {
-  name = "playtime.com"
+  name = "goplay.com"
 }
 
 resource "aws_route53_record" "main" {
   zone_id = aws_route53_zone.main.zone_id
-  name    = "playtime.com"
+  name    = "goplay.com"
   type    = "A"
 
   alias {
@@ -15,7 +15,7 @@ resource "aws_route53_record" "main" {
 }
 
 resource "aws_acm_certificate" "main" {
-  domain_name       = "playtime.com"
+  domain_name       = "goplay.com"
   validation_method = "DNS"
 
   lifecycle {

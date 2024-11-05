@@ -5,7 +5,7 @@ provider "aws" {
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
   
-  name = "sportspot-vpc"
+  name = "goplay-vpc"
   cidr = "10.0.0.0/16"
   
   azs             = ["us-west-2a", "us-west-2b"]
@@ -18,7 +18,7 @@ module "vpc" {
 module "eks" {
   source = "terraform-aws-modules/eks/aws"
   
-  cluster_name    = "sportspot-cluster"
+  cluster_name    = "goplay-cluster"
   cluster_version = "1.27"
   
   vpc_id     = module.vpc.vpc_id
@@ -38,15 +38,15 @@ module "eks" {
 module "rds" {
   source = "terraform-aws-modules/rds/aws"
   
-  identifier = "sportspot-mysql"
+  identifier = "goplay-mysql"
   
   engine            = "mysql"
   engine_version    = "8.0"
   instance_class    = "db.t3.medium"
   allocated_storage = 20
   
-  db_name  = "sportspot"
-  username = "sportspot"
+  db_name  = "goplay"
+  username = "goplay"
   port     = "3306"
   
   vpc_security_group_ids = [aws_security_group.rds.id]
